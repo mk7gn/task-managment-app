@@ -32,4 +32,14 @@ export class TasksService {
     this.tasks = this.tasks.filter(task => task.id !== id);
     return this.tasks;
   }
+
+  changeTaskStatus(id: string, payload: {status: TaskStatus}): Task[] {
+    this.tasks = this.tasks.map(task => {
+      if (task.id === id) {
+        task.status = payload.status;
+      }
+      return task;
+    });
+    return this.tasks;
+  }
 }
